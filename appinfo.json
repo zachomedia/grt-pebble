@@ -1,0 +1,17 @@
+{
+  "uuid": "b8304894-9020-4ada-90d4-61fcd932611f",
+  "shortName": "GRT",
+  "longName": "Grand River Transit - Schedule",
+  "companyName": "Zachary Seguin",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
