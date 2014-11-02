@@ -40,10 +40,10 @@ struct stop_selection
    int active_digit;
 } __attribute__((aligned(1)));
 
-int ipow(int a, int b)
+static int ipow(int a, int b)
 {
    return (b == 0) ? 1 : a * ipow(a, b - 1);
-}
+}// End of ipow method
 
 static int stop_selection_get_stop_id(StopSelection ss)
 {
@@ -86,7 +86,7 @@ static TextLayer *create_digit_layer(GRect frame, const char *text)
    debug("Creating 'digit_layer'");
    
    TextLayer *layer = text_layer_create(frame);
-   if (layer == NULL) error("Unable to allocate memory for 'digit_layer'");
+   if (!layer) error("Unable to allocate memory for 'digit_layer'");
    
    text_layer_set_text(layer, text);
    text_layer_set_font(layer, fonts_get_system_font(FONT_KEY_BITHAM_34_MEDIUM_NUMBERS));
@@ -134,7 +134,7 @@ static void stop_selection_handle_window_unload(Window* window)
    for (int x = 0; x < DIGITS_LENGTH; ++x)
    {
       free(ss->digits[x]);
-      free(ss->digit_layers[x]);
+      text_layer_destroy(ss->digit_layers[x]);
       
       ss->digits[x] = NULL;
       ss->digit_layers[x] = NULL;
